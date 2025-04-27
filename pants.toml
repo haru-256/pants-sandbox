@@ -1,0 +1,32 @@
+[GLOBAL]
+pants_version = "2.25.1"
+backend_packages = [
+  "pants.backend.python",
+  "pants.backend.python.mixed_interpreter_constraints",
+  "pants.backend.build_files.fmt.ruff",
+  "pants.backend.python.typecheck.mypy",
+]
+
+[source]
+root_patterns = ["/"]
+marker_filenames = ["pyproject.toml"]
+
+[python]
+interpreter_constraints = [ "CPython==3.12.*" ]
+enable_resolves = true
+default_resolve = "project-a"
+
+[python.resolves]
+project-a = "projects/project-a/pants.lock"
+project-b = "projects/project-b/pants.lock"
+
+[python.resolves_to_interpreter_constraints]
+project-a = ["CPython==3.12.*"]
+project-b = ["CPython==3.11.*"]
+
+[ruff]
+version = "0.7.2"         # 2025-04-26現在これがpantsでサポートしている最新のもの
+config = "pyproject.toml" # pyproject.tomlを参照する
+
+[mypy]
+config = "pyproject.toml" # pyproject.tomlを参照する
