@@ -5,7 +5,7 @@
 - 何故かmypy checkがproject-a or project-bのみしか見てくれない
 - pathを指定すると、projects/project-bの下に生えている。正しくは、"projects/project-b/projects/project-a/\*\*"ではなく、  "projects/project-a/\*\*"のようにしたい
 
-![alt text](image.png)
+![alt text](img/20250427T111899.png)
 
 ## 分かったこと
 
